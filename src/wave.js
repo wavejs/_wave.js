@@ -1,5 +1,9 @@
 /**
+<<<<<<< HEAD
  * wave.js JavaScript Library v0.1.0
+=======
+ * wave.js JavaScript Library v0.0.1
+>>>>>>> master
  * 
  * http://wavejs.io
  */
@@ -20,11 +24,14 @@
 
     var wave = {};
 
-    wave.VERSION = '0.1.0';
+
+    wave.VERSION = '0.0.1';
+
 
     // ----------------------------
     // wave.js Collection Functions
     // ----------------------------
+
     
 
     // ----------------------------
@@ -32,6 +39,17 @@
     // ----------------------------
     wave.ua = (function() {
         
+
+    wave.isArray = Array.isArray || function(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    };
+
+    /**
+     * [UserAgent]
+     * @return {[Object]} [Get Browser's UserAgent value.]
+     */
+    wave.ua = (function() {
+
         var ua = window.navigator.userAgent.toString().toLowerCase();
 
         function checkUserAgent(ua) {
