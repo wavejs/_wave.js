@@ -38,11 +38,6 @@
     // wave.js UserAgent Function
     // ----------------------------
     wave.ua = (function() {
-        
-
-    wave.isArray = Array.isArray || function(obj) {
-        return Object.prototype.toString.call(obj) === '[object Array]';
-    };
 
     /**
      * [UserAgent]
