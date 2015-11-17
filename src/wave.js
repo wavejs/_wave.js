@@ -1,11 +1,8 @@
 /**
-<<<<<<< HEAD
  * wave.js JavaScript Library v0.1.0
-=======
- * wave.js JavaScript Library v0.0.1
->>>>>>> master
  * 
  * http://wavejs.io
+ * 
  */
 (function(root, factory) {
     if (typeof define === 'function' && define.amd) {
@@ -32,15 +29,8 @@
     // wave.js Collection Functions
     // ----------------------------
 
-    
-
-    // ----------------------------
-    // wave.js UserAgent Function
-    // ----------------------------
-    wave.ua = (function() {
-
     /**
-     * [UserAgent]
+     * [wave.ua]
      * @return {[Object]} [Get Browser's UserAgent value.]
      */
     wave.ua = (function() {
@@ -56,6 +46,7 @@
                 /(webkit)(?:.*version)?[ \/]([\w.]+)/.exec(ua) ||
                 /(msie) ([\w.]+)/.exec(ua) ||
                 ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+))?/.exec(ua) ||
+                /(silk)(?:.*? rv:([\w.]+))?/.exec(ua) ||
                 ["", "unknown"];
             if (match[1] === "webkit") {
                 match = /(iphone|ipad|ipod)[\S\s]*os ([\w._\-]+) like/.exec(ua) ||
