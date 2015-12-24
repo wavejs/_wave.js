@@ -4,6 +4,6 @@
   } else if (typeof exports === 'object') {
     module.exports = factory();
   } else {
-    root.Wave = factory();
+    root.wave = factory();
   }
-}(this, function() {
+}(typeof window !== 'undefined' ? window : this, function() {

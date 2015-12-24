@@ -1,15 +1,7 @@
-;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define([], factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory();
-  } else {
-    root.wave = factory();
-  }
-}(this, function() {
-
+'use strict';
 
 var wave = window.wave || (window.wave = {});
+var moduleList = {};
 
 // Common Utils
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -25,8 +17,8 @@ function isArray(value) {return toString.call(value) === '[object Array]';}
 function isUndefined(value) {return value === undefined;}
 function isNull(value) {return value === null;}
 
-var moduleList = {};
 
+wave.VERSION = '0.1.0';
 wave.config = {
     debug: true
 }
@@ -47,7 +39,7 @@ wave.extend = function() {
                 targetObj = opts[ prop ];
 
                 // duplicate source stop
-                console.log('sourceObj',sourceObj);
+                //console.log('sourceObj',sourceObj);
                 if (!isUndefined(sourceObj) && !isNull(sourceObj)) {
                     throw new Error('already extend registerd');
                     continue;
@@ -65,6 +57,13 @@ wave.extend = function() {
     return baseObj;
 }
 
+/**
+ * 기본 유틸이 아닌 모듈형으로 등록시 사용
+ * @param  {String}   name           [모듈 이름]  
+ * @param  {Function} moduleFunction [모듈 Function] 
+ * @param  {Boolean}  classPattern   [생성자형태로 모듈에 등록할 것인지에 대한 여부]
+ * @return {object | undefined}      [name만 넣는다면 모듈에 대한 해당 name에 대한 참조값]
+ */
 wave.module = function(name, moduleFunction, classPattern){
     if (isUndefined(name)) {
         throw new Error('not found name parameter');
@@ -92,60 +91,6 @@ wave.module = function(name, moduleFunction, classPattern){
 }
 
 wave.extend(wave, {
-    isObject: isObject,
-    $$module: moduleList
+    $$module: moduleList,
+    isObject: isObject
 });
-
-
-function ClassTest(a, b, c){
-    this.test = 'abc';
-    this.getScope = function(){
-        console.log(this);
-        return this;
-    }
-    this.trace = function(){
-        console.log(a, b, c);
-    }
-}
-ClassTest.prototype = {
-    view: function(){
-        console.log('ClassTest');
-    }
-}
-
-wave.module('Classtest', ClassTest, true);
-
-/*function classTest2(){
-    return{
-        trim: function(){
-            console.log('trim');
-        }, 
-
-        watchList: function(){
-            console.log('watchList');
-        }
-    }
-}*/
-
-//wave.module('classtest', classTest);
-
-
-wave.module('utils', function(){
-    return{
-        trim: function(){
-            console.log('trim');
-        }, 
-
-        watchList: function(){
-            console.log('watchList');
-        }
-    }
-})
-
-
-
-
-return wave;
-
-
-}));
