@@ -6,6 +6,7 @@ var moduleList = {};
 // Common Utils
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var toString = Object.prototype.toString;
+var join = Array.prototype.join;
 
 // Check type
 function isObject(value) {return value !== null && typeof value === 'object';}
@@ -23,6 +24,36 @@ wave.config = {
     debug: true
 }
 
+/**
+ * Log Utils
+ * * console를 지원하는 브라우저에서는 console, 아닌경우는 alert으로 활성화
+ */
+wave.log = function(){
+    try {
+      console.log.apply(console, arguments);
+    } catch(e) {
+      alert(join.call(arguments, ' '));
+    }
+}
+
+/**
+ * extend Utils
+ * @return {object}
+ * @example
+    1.  wave.extend({a:1,b:2}, {a:2,b:3,c:4}, {d:3}) --> Object {a: 2, b: 3, c: 4, d: 3}
+    2.  wave.extend(wave, function(){
+            var method1 = function(){};
+            return{
+                method1: method1,
+                method2: function(){}
+            }
+        })
+    3.  var ClassType = function(){};
+        ClassType.prototype = {}; 
+        wave.extend(wave, {classname:ClassType})
+
+    ** 2, 3 같은 경우는 extend를 직접사용하지 않고 module method를 사용
+ */
 wave.extend = function() {
     var baseObj = arguments[0] || {},
         sourceObj, targetObj,
@@ -39,10 +70,19 @@ wave.extend = function() {
                 targetObj = opts[ prop ];
 
                 // duplicate source stop
-                //console.log('sourceObj',sourceObj);
-                if (!isUndefined(sourceObj) && !isNull(sourceObj)) {
+                /*console.log('sourceObj',sourceObj);
+                console.log('sourceObj',prop);
+                console.log('baseObj',baseObj === wave);*/
+
+                // base가 wave일때는 모듈 중복을 불허한다.
+                if (baseObj === wave && !isUndefined(sourceObj) && !isNull(sourceObj)) {
                     throw new Error('already extend registerd');
                     continue;
+                } else {
+                    // 기존 소스값과 같은 경우 변경하지 않는다.
+                    if (sourceObj === targetObj) {
+                        continue;
+                    }
                 }
 
                 if (!isUndefined(targetObj)) {
