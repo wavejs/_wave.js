@@ -1,0 +1,15 @@
+{
+  "name": "WaveJS",
+  "title": "WaveJS",
+  "version": "0.0.1",
+  "description": "Wave Javascript",
+  "main": "dist/wave.js",
+  "homepage": "http://www.wemakeprice.com/",
+  "author": "Frontend",
+  "license": "WMP",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.2.0"
+  }
+}
