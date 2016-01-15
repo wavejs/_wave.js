@@ -1,8 +1,10 @@
-'use strict';
+var log = require('./logger');
 
-var wave = window.wave || (window.wave = {});
+var wave = {id:'wavejs'};
 var moduleList = {};
-
+var config = {
+    debug: true
+}
 // Common Utils
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 var toString = Object.prototype.toString;
@@ -17,24 +19,6 @@ function isRegExp(value) {return toString.call(value) === '[object RegExp]';}
 function isArray(value) {return toString.call(value) === '[object Array]';}
 function isUndefined(value) {return value === undefined;}
 function isNull(value) {return value === null;}
-
-
-wave.VERSION = '0.1.0';
-wave.config = {
-    debug: true
-}
-
-/**
- * Log Utils
- * * console를 지원하는 브라우저에서는 console, 아닌경우는 alert으로 활성화
- */
-wave.log = function(){
-    try {
-      console.log.apply(console, arguments);
-    } catch(e) {
-      alert(join.call(arguments, ' '));
-    }
-}
 
 /**
  * extend Utils
@@ -54,17 +38,26 @@ wave.log = function(){
 
     ** 2, 3 같은 경우는 extend를 직접사용하지 않고 module method를 사용
  */
-wave.extend = function() {
+function extend() {
     var baseObj = arguments[0] || {},
         sourceObj, targetObj,
         len = arguments.length,
-        opts = null;
+        opts = null,
+        baseWaveCh = false;
 
     (!isObject(baseObj) && !isFunction(baseObj)) && (baseObj = {});
+    baseWaveCh = (baseObj.__id && baseObj.__id == 'WaVe');
 
     for(var i = 1; i < len; i++) {
         opts = arguments[i];
         if (opts != null) {
+
+            if (typeof opts == 'function' && opts.name) {
+                var obj = {};
+                obj[opts.name] = opts;
+                opts = obj;
+            }
+
             for (var prop in opts) {
                 sourceObj = baseObj[ prop ];
                 targetObj = opts[ prop ];
@@ -75,7 +68,8 @@ wave.extend = function() {
                 console.log('baseObj',baseObj === wave);*/
 
                 // base가 wave일때는 모듈 중복을 불허한다.
-                if (baseObj === wave && !isUndefined(sourceObj) && !isNull(sourceObj)) {
+                // console.log('sourceObj',sourceObj);
+                if (baseObj === wave /*&& baseWaveCh*/ && !isUndefined(sourceObj) && !isNull(sourceObj)) {
                     throw new Error('already extend registerd');
                     continue;
                 } else {
@@ -104,7 +98,7 @@ wave.extend = function() {
  * @param  {Boolean}  classPattern   [생성자형태로 모듈에 등록할 것인지에 대한 여부]
  * @return {object | undefined}      [name만 넣는다면 모듈에 대한 해당 name에 대한 참조값]
  */
-wave.module = function(name, moduleFunction, classPattern){
+function moduler(name, moduleFunction, classPattern){
     if (isUndefined(name)) {
         throw new Error('not found name parameter');
     }
@@ -116,21 +110,38 @@ wave.module = function(name, moduleFunction, classPattern){
 
     // setter
     if (isUndefined(moduleList[name])) {
-        moduleList[name] = (classPattern)?moduleFunction:moduleFunction();
+        moduleList[name] = moduleFunction;//(classPattern)?moduleFunction:moduleFunction();
         if (classPattern) {
-            wave.extend(wave, {[name]:moduleList[name]})
+            var obj = {};
+            obj[name] = moduleList[name];
+            extend(wave, obj);
         } else {
-            wave.extend(wave, moduleList[name]);    // wave.method();
+            extend(wave, moduleList[name]);    // wave.method();
         }
-    }
-
-    // debug mode
-    if (wave.config.debug && !isUndefined(moduleFunction)) {
-        wave.extend(window, (classPattern)?{[name]:moduleFunction}:moduleFunction());
     }
 }
 
-wave.extend(wave, {
+extend(wave, {
+    hasOwn: hasOwnProperty,
+    toStr: toString,
+    join: join,
+
+    isObject: isObject,
+    isString: isString,
+    isNumber: isNumber,
+    isFunction: isFunction,
+    isRegExp: isRegExp,
+    isArray: isArray,
+    isUndefined: isUndefined,
+    isNull: isNull,
+
+    log: log,
+    extend: extend,
+    moduler: moduler,
+
     $$module: moduleList,
-    isObject: isObject
-});
+    config: config
+})
+
+log('[src/core/index.js]');
+module.exports = wave;

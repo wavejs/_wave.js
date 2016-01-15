@@ -14,4 +14,15 @@ ClassTest.prototype = {
     }
 }
 
-wave.module('ClassTest', ClassTest, true);
+// 시점 테스트 require('./')를 위한.
+/*console.log('[src/utils/ClassTest.js]testInterval1',utils.stringlength);
+var testInterval = setInterval(function(){
+    console.log('[src/utils/ClassTest.js]testInterval2',utils.stringlength);
+    if ( utils.stringlength ) {
+        clearInterval(testInterval);
+    }
+}, 0)*/
+
+console.log('[src/utils/ClassTest.js]');
+
+module.exports = ClassTest;
