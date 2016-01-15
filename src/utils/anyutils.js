@@ -1,18 +1,18 @@
-var wave = require('../core/index');
+var log = require('../core/logger');
 var utils = require('./');
 
 var anyUtils = {
     testFunc: function(){
-        console.log('[testFunc]util : ', utils.stringlength());
+        log('[testFunc]util : ', utils.stringlength());
     },
 
     trim: function(){
-        console.log('strUtils',util);
-        console.log('trim');
+        log('strUtils',util);
+        log('trim');
     }, 
 
     watchList: function(){
-        console.log('watchList');
+        log('watchList');
     },
 
     //duplicate test
@@ -30,5 +30,5 @@ var testInterval = setInterval(function(){
     }
 }, 0)*/
 
-console.log('[src/utils/anyutils.js]');
+log('[src/utils/anyutils.js]');
 module.exports = anyUtils;
