@@ -1,7 +1,10 @@
-var W = require('../index');
+var assert = require('assert');
+var wave = require('..');
 
-console.log('W', W);
+describe('Basic', function () {
+  it('test 1', function () {
+    var len = wave.size('STRING');
 
-var len = W.size('isTEST');
-
-console.log('len %i', len);
+    assert.equal(len, 6, 'what the..');
+  });
+});

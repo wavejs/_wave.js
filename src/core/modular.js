@@ -10,7 +10,6 @@ var PREFIX = '$$modules';
 
 function Modular(target) {
   if (!(this instanceof Modular)) {
-    console.log('this', this, target);
     return new Modular(target);
   }
 
