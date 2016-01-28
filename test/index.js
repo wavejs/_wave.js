@@ -1,3 +1,7 @@
-var Wave = require('../lib/Wave');
+var W = require('../index');
 
-Wave.define();
+console.log('W', W);
+
+var len = W.size('isTEST');
+
+console.log('len %i', len);
