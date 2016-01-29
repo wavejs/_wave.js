@@ -2,7 +2,7 @@
 
 var Core = require('../core');
 
-Core.Modular(module.exports)
+Core.Poseidon(module.exports)
   .assign(require('./array'))
   .assign(require('./string'));
 

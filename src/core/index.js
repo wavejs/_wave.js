@@ -2,8 +2,9 @@
 
 var Modular = require('./modular');
 
-// modular(module.exports).assign({modular: modular});
+Modular(module.exports)
+  .assign({Poseidon: Modular});
 
-module.exports = {
-  Modular: Modular
-};
+// module.exports = {
+//   Poseidon: Modular
+// };

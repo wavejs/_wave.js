@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./src/Wave');
+module.exports = require('./src/WaveNode');
