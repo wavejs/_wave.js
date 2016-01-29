@@ -44,7 +44,8 @@ gulp.task('build-min', function () {
 });
 
 gulp.task('lint', function () {
-  return gulp.src('src/**/*.js')
+  return gulp.src('dist/*.js')
+  // return gulp.src('src/**/*.js')
     .pipe(jshint())
     .pipe(jshint.extract('require|exports'))
     .pipe(jshint.reporter('default'))
@@ -59,3 +60,8 @@ gulp.task('test', function () {
 
 // watch
 // gulp.watch('src/**/*.js', []);
+
+// watch
+gulp.task('watch', function () {
+  gulp.watch('src/**/*.js', ['build']);
+});
