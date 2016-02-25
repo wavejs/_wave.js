@@ -1,13 +1,11 @@
 'use strict';
 
-var Wave = {};
-var WaveCore = require('./core');
-var WaveUtils = require('./utils');
+var Wave = require('./core');
 
-WaveCore.Poseidon(Wave)
-  .assign({version: '@@VERSION'})
-  .assign(WaveCore)
-  .assign(WaveUtils)
-  .regist('utils', WaveUtils);
+Wave.breeze(Wave, {
+    version: '@@VERSION'
+});
+
+Wave.gust(Wave, require('./utils'));
 
 module.exports = Wave;

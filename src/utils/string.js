@@ -2,10 +2,14 @@
 
 var utils = require('./');
 
-exports.isString = function(obj) {
-  return typeof obj === 'string';
+exports.trim = function (obj) {
+    var natTrim = String.prototype.trim;
+
+    if (natTrim) { return natTrim(obj); }
+
+    return obj.replace(/^\s+|\s+$/gm, '');
 };
 
-exports.len = function(str) {
-  return str.length;
+exports.len = function (str) {
+    return str.length;
 };
