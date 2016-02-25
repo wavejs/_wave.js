@@ -52,6 +52,7 @@ README.md      #README markdown 문서
 
 ### Core - src/core/index.js
 * Core 구성을 위한 index 입니다.
+* 아래 구성에서 적용하고자 하는 패턴이 추상화된 멤버를 구성하고자 하는 패턴이지만 구체화되지는 않은 상태입니다.
 * `프로토타입 멤버변수 확장 형태`는 인스턴스 생성시 부가적인 환경구성을 위한 샘플링 형태입니다.
 * `프로토타입 기본 형태`는 반드시 필요한 멤버변수와 프로토타입만 확장한 형태입니다.
 ```
@@ -138,3 +139,24 @@ Core.breeze(Core, helpers);
 // Mixin requires with prototype
 Core.gust(Core, extend);
 ```
+
+### 고민거리들..
+
+* flyweight 패턴을 통해 메모리 관리의 효율을 높이기 위해 확장한 패턴
+* 실제 확장하고자 하는 method들을 namespace를 가진 객체를 은닉화하여 관리하는 방안
+* 은닉화된 메서드들을 호출하는 property 및 prototype 메서드 구현
+* namespace를 가진 메서드들을 assign 및 merge하며, 중복된 메서드들에 대한 오버로딩 map 구현
+* 은닉화된 메서드들에 대한 public 속성을 가지지만 내부함수처럼 사용되는 getter/setter factory 구현
+* 은닉의 범위를 멤버변수도 포함할 것인가?
+* 확장 메서드가 체이닝되지 않은 형태에서도 생성자 확장 및 chainning되는 형태 구현
+* 확장하기 위한 기본 함수들..예를들면 유틸리티 성격의 함수들을 메서드 1개의 단위를 기준으로 js파일 생성하는 형태
+* 사용할 만한 Class를 재사용가능한 객체단위로 구현하고, Core initialize에 포함하는 형태 구현
+* Constructor의 정의
+* Core에 확장을 위한 interface, 즉 Wave에 UI, DOM, ENV 등의 확장을 위한 interface 구현
+* 주석에서 표현하고자 하는 범위 및 표현 방법, JSDoc 버전 기준일 수도 있으나 일반적으로 사용되지 않는 @chainable 등의 형태
+* e.g. @param의 type이 {Object} ? {object} ? , {Mixed} ? 등등..
+* minify된 js 주석 내용 체크
+* extend 함수의 deep/shallow copy 처리
+* Built-in native 객체에 대한 공통 처리 여부
+* Core에 predefine될 요소들에 대한 고민
+* 확장시 Chainning될 메서드와 Chainning을 마치는 메서드의 구분이 필요할 것인가?
