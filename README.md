@@ -10,7 +10,7 @@ git checkout feature-prototype-review1
 
 package 설치 및 실행
 ```
-npm install --dev
+npm install
 
 gulp watch
 ```
@@ -18,7 +18,7 @@ gulp watch
 ## Build
 
 ```
-# watch
+# watch 이후 저장시마다 lint, test, build 등이 진행됩니다.
 gulp watch
 # build
 gulp build
