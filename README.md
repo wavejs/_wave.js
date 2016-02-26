@@ -143,8 +143,8 @@ Core.gust(Core, extend);
 
 ### 고민거리들..
 
-* flyweight 패턴을 통해 메모리 관리의 효율을 높이기 위해 확장한 패턴
-* 실제 확장하고자 하는 method들을 namespace를 가진 객체를 은닉화하여 관리하는 방안
+* 메모리 관리의 효율을 높이기 위한 패턴 적용
+* 확장하고자하는 method들을 namespace를 가진 객체를 은닉화하여 관리하는 방안
 * 은닉화된 메서드들을 호출하는 property 및 prototype 메서드 구현
 * namespace를 가진 메서드들을 assign 및 merge하며, 중복된 메서드들에 대한 오버로딩 map 구현
 * 은닉화된 메서드들에 대한 public 속성을 가지지만 내부함수처럼 사용되는 getter/setter factory 구현
