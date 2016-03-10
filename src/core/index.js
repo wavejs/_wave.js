@@ -1,7 +1,7 @@
 'use strict';
 
 // Mixin methods
-var winds = require('./mix'),
+var winds = require('./mixin'),
     helpers = require('./helpers'),
     extend = require('./extend');
 
