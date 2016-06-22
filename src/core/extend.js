@@ -8,6 +8,7 @@ var protoArray = Array.prototype,
 var slice = protoArray.slice,
     hasOwn = protoObject.hasOwnProperty;
 
+
 // @todo shallow copy & deep copy 구현
 exports.extend = function (/* [deep], target, sources */) {
     var args = slice.call(arguments, 0),

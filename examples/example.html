@@ -14,6 +14,25 @@
     <script type="text/JavaScript" src="../dist/wave-0.1.0.js"></script>
     <script type="text/JavaScript">
     console.log('wave.js', wave);
+
+    var ClassType = function() {};
+    ClassType.prototype = {
+        init: function(){
+            console.log('init');
+        }
+    }
+
+    var obj = {
+        strutil: function(){
+            console.log('strutil');
+        },
+
+        log: function(){
+            console.log('log');
+        }
+    }
+
+    var test = new ClassType();
     </script>
 </body>
 </html>

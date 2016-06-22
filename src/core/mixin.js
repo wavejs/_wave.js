@@ -1,6 +1,7 @@
 'use strict';
 
 var helpers = require('./helpers');
+var extend = require('./extend');
 
 var protoArray = Array.prototype,
     protoObject = Object.prototype;
@@ -8,6 +9,13 @@ var protoArray = Array.prototype,
 var push = protoArray.push,
     slice = protoArray.slice,
     hasOwn = protoObject.hasOwnProperty;
+
+
+exports.moduleCreate = function(destination, sources) {
+
+}
+
+
 
 /**
  * 객체를 확장합니다.
@@ -17,7 +25,7 @@ var push = protoArray.push,
  * @param {object} sources 확장할 함수 집합의 객체, n개의 매개변수를 가질 수 있습니다.
  * @return {function|object} 확장된 destination 객체를 반환합니다.
  */
-exports.wind = function (/* [proto], destination, sources */) {
+exports._moduleExtendCore = function (/* [proto], destination, sources */) {
     var args = slice.call(arguments, 0),
         dest = args.shift(),
         proto = false;
@@ -32,7 +40,10 @@ exports.wind = function (/* [proto], destination, sources */) {
         proto = dest;
         dest = args.shift();
     }
-
+/*console.log('==========');
+console.log('dest', typeof dest, helpers.isObject(dest));
+console.log('proto', proto);
+console.log('==========');*/
     // function 또는 object 타입 체크
     if (!helpers.isFunction(dest) && !helpers.isObject(dest)) {
         throw new TypeError('type of target is invalid. {function|object}');
@@ -42,24 +53,40 @@ exports.wind = function (/* [proto], destination, sources */) {
     if (proto && !helpers.isFunction(dest)) {
         throw new TypeError('type of target is invalid. {function}');
     }
-
+/*console.log('dest', dest);
+console.log('proto', proto);
+console.log('==========');*/
     // dest에 할당할 sources 루프
     for (i = 0, l = args.length; i < l; i++) {
         source = args[i];
 
         for (prop in source) {
+            /*console.log('source', source);
+            console.log('prop', prop);*/
             // source의 프로퍼티만 적용
             if (!hasOwn.call(source, prop)) { continue; }
 
-            // function만 허용
-            if (!helpers.isFunction(source[prop])) { continue; }
+            // prototype 확장 모드일 때 function만 허용
+            // property만 확장할때 function, Literal Object만 허용
+            if (!helpers.isFunction(source[prop])) {
+                if (!proto) {
+                    if (!helpers.isLiteralObject(source[prop])) { continue; }
+                } else {
+                    continue;
+                }
+            }
 
             // dest에 이미 포함된 프로퍼티인 경우 제외
-            // @todo 오류를 출력할지? 제외만 할지?
-            // if (hasOwn.call(dest, prop)) { continue; }
-            if (hasOwn.call(dest, prop)) { throw new Error('already defined - ' + prop); }
+            // @todo 오류를 출력할지? 제외만 할지? : 오류 출력
+            if (hasOwn.call(dest, prop)) { throw new Error('already defined Property - ' + prop); }
 
             var func = dest[prop] = source[prop];
+            
+            // log test
+            if (!helpers.isFunction(source[prop])) {
+                console.log('isFunction',dest, prop, dest[prop], source[prop]);
+                console.log( 'hasOwn.call(dest, prop)', hasOwn.call(dest, prop));
+            }
 
             // 프로토타입 할당 제외인 경우
             if (!proto) { continue; }
@@ -88,12 +115,12 @@ exports.wind = function (/* [proto], destination, sources */) {
  * @param {object} sources 확장할 함수 집합의 객체, n개의 매개변수를 가질 수 있습니다.
  * @return {function|object} 확장된 destination 객체를 반환합니다.
  */
-exports.breeze = function (/* destination, sources */) {
+exports.moduleExtend = function (/* destination, sources */) {
     var args = [false];
 
     push.apply(args, arguments);
 
-    return this.wind.apply(null, args);
+    return this._moduleExtendCore.apply(null, args);
 };
 
 /**
@@ -104,10 +131,10 @@ exports.breeze = function (/* destination, sources */) {
  * @param {object} sources 확장할 함수 집합의 객체, n개의 매개변수를 가질 수 있습니다.
  * @return {function|object} 확장된 destination 객체를 반환합니다.
  */
-exports.gust = function (/* destination, sources */) {
+exports.moduleExtendDeep = function (/* destination, sources */) {
     var args = [true];
 
     push.apply(args, arguments);
 
-    return this.wind.apply(null, args);
+    return this._moduleExtendCore.apply(null, args);
 };

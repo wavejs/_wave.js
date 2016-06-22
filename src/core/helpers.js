@@ -7,6 +7,7 @@ var push = protoArray.push,
     slice = protoArray.slice,
     toStr = protoObject.toString;
 
+
 exports.isFunction = function (obj) {
     return typeof obj === 'function';
 };
@@ -14,6 +15,10 @@ exports.isFunction = function (obj) {
 exports.isObject = function (obj) {
     return typeof obj === 'object' && !!obj;
 };
+
+exports.isLiteralObject = function(obj) {
+    return obj && obj.constructor && obj.constructor.name === 'Object'; 
+}
 
 exports.isString = function (obj) {
     return typeof obj === 'string';
@@ -28,7 +33,7 @@ exports.isBoolean = function (obj) {
 };
 
 exports.isArray = function (obj) {
-    return toStr.call(obj) === '[object Array]';
+    return (Array.isArray)?Array.isArray(obj):toStr.call(obj) === '[object Array]';
 };
 
 exports.isRegExp = function (obj) {

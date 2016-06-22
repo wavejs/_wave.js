@@ -1,9 +1,10 @@
 'use strict';
 
 // Mixin methods
-var winds = require('./mixin'),
+var mixin = require('./mixin'),
     helpers = require('./helpers'),
-    extend = require('./extend');
+    extend = require('./extend'),
+    polyfill = require('./polyfill');
 
 /**
  * Core
@@ -30,18 +31,24 @@ var protoCore = {
     _make: function (length, keys) {
         return {
             count: length,
-            keys: keys
+            keys: keys || null
         };
     },
     _set: function (obj) {
         if (Core.isArray(obj)) {
             this.info = this._make(obj.length, Core.keys(obj));
+        } else if (Core.isString(obj)) {
+            this.info = this._make(obj.length);
+        } else {
+            delete this.info;
         }
     },
     val: function () {
         return this._obj;
     }
 };
+
+
 
 Core.prototype = protoCore;
 /*********************
@@ -63,13 +70,22 @@ Core.prototype = protoCore;
  *********************/
 
 // Mixin Core
-winds.wind(Core, winds);
+mixin._moduleExtendCore(Core, mixin);
 
 // Mixin requires
-Core.breeze(Core, helpers);
+Core.moduleExtend(Core, helpers);
 
 // Mixin requires with prototype
-Core.gust(Core, extend);
+Core.moduleExtendDeep(Core, extend);
+
+// var obj1 = {a:function(){}, b:function(){}, c:{}};
+// var obj2 = {a:function(){}, c:function(){}};
+
+/*console.log('=====================1', Core.c)
+Core.moduleExtendDeep(Core, obj1);
+console.log('=====================2', Core.c)*/
+// Core.moduleExtendDeep(Core, obj2);
+
 
 // exports
 module.exports = Core;

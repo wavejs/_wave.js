@@ -19,16 +19,12 @@ var banner = '/**\n' +
              ' * @license <%= pkg.license %>\n' + 
              ' * @link <%= pkg.homepage %>\n' + 
              ' */\n';
-var opts = {
-    entries: ['src/Wave.js'],
-    standalone: 'wave'
-};
 
 // for Browser
 gulp.task('build', function () {
     return gulp.src('src/WaveBrowser.js')
         .pipe(replace(/@@VERSION/g, pkg.version))
-        .pipe(browserify({standalone: 'wave'}))
+        .pipe(browserify({standalone: 'vv'}))
         .pipe(rename('wave-' + pkg.version + '.js'))
         .pipe(gulp.dest('dist'));
 });

@@ -2,8 +2,10 @@
 
 var Core = require('../core');
 
-Core.breeze(
+Core.moduleExtend(
     module.exports,
-    require('./array'),
-    require('./string')
+    require('./core'),       // utils core
+    require('./browser')       // utils browser
 );
+
+// console.log('Core', module.exports.bb.getHash);

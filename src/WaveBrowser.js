@@ -1,11 +1,15 @@
 'use strict';
 
-var Wave = require('./core');
+var vv = require('./core');
 
-Wave.breeze(Wave, {
+vv.moduleExtend(vv, {
     version: '@@VERSION'
 });
+// console.log('vv',vv.a);
+vv.moduleExtendDeep(vv, require('./utils'));
+vv.moduleExtendDeep(vv, require('./global'));
 
-Wave.gust(Wave, require('./utils'));
+console.log('utils = = = = = :',require('./utils'));
+console.log(vv.version)
 
-module.exports = Wave;
+module.exports = vv;
