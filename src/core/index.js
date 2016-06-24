@@ -8,8 +8,15 @@ var mixin = require('./mixin'),
 
 /**
  * Core
- * @constructor
+ *
+ * @class Core
+ * @constructor Core
+ * @param {object} obj Parameter
+ * @return {object} return data
+ * @example
+ * test example
  */
+
 var Core = function (obj) {
     if (!(this instanceof Core)) {
         return new Core(obj);

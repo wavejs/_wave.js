@@ -9,20 +9,18 @@ var Core = require('../../core');
     require('./info')
 );*/
 
-var browserInfo = {};
-browserInfo.bb = {};
+var indexObj = {
+    browserInfo: {}
+};
 
-Core._moduleExtendCore(
-    browserInfo.bb, 
+Core.moduleExtend(
+    indexObj.browserInfo, 
     require('./info')
 )
 
-Core._moduleExtendCore(
+Core.moduleExtend(
     module.exports,
-    browserInfo
+    indexObj
 )
 
-
-
-
-console.log('browserInfo = = = = = :',browserInfo);
+// console.log('browserInfo = = = = = :',browserInfo);

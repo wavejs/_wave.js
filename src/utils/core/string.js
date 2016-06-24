@@ -25,3 +25,22 @@ exports.formatToNumber = function(value){
     (isMinus) && (value = '-' + value);
     return Number(value);
 }
+
+/**
+ * trim default config
+ * @method trim
+ * @example
+ * trim: {
+ *  fitToWidthRightMargin: 10,
+ *  fitToWidth: false,
+ *  pageSize: 10,
+ *  pageHeight: 400,
+ *  keyResult: "result",
+ *  keyTree: "tree",
+ *  keyList: "list",
+ *  emptyListMSG: "목록이 없습니다."
+ * }
+ */
+exports.memberfunc = function(a, b) {
+
+}

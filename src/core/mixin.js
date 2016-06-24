@@ -10,13 +10,6 @@ var push = protoArray.push,
     slice = protoArray.slice,
     hasOwn = protoObject.hasOwnProperty;
 
-
-exports.moduleCreate = function(destination, sources) {
-
-}
-
-
-
 /**
  * 객체를 확장합니다.
  * 
@@ -66,15 +59,15 @@ console.log('==========');*/
             // source의 프로퍼티만 적용
             if (!hasOwn.call(source, prop)) { continue; }
 
-            // prototype 확장 모드일 때 function만 허용
+            
             // property만 확장할때 function, Literal Object만 허용
-            if (!helpers.isFunction(source[prop])) {
+            /*if (!helpers.isFunction(source[prop])) {
                 if (!proto) {
                     if (!helpers.isLiteralObject(source[prop])) { continue; }
                 } else {
                     continue;
                 }
-            }
+            }*/
 
             // dest에 이미 포함된 프로퍼티인 경우 제외
             // @todo 오류를 출력할지? 제외만 할지? : 오류 출력
@@ -83,13 +76,14 @@ console.log('==========');*/
             var func = dest[prop] = source[prop];
             
             // log test
-            if (!helpers.isFunction(source[prop])) {
+            /*if (!helpers.isFunction(source[prop])) {
                 console.log('isFunction',dest, prop, dest[prop], source[prop]);
                 console.log( 'hasOwn.call(dest, prop)', hasOwn.call(dest, prop));
-            }
+            }*/
 
-            // 프로토타입 할당 제외인 경우
-            if (!proto) { continue; }
+            // prototype 할당 제외인 경우
+            // prototype 확장 모드일 때 function만 허용
+            if (!proto || !helpers.isFunction(source[prop])) { continue; }
 
             // 체이닝을 위한 dest의 프로퍼티를 호출하는 프로토타입 할당
             dest.prototype[prop] = (function (fn, dst) {

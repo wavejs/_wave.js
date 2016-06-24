@@ -8,7 +8,32 @@ var protoArray = Array.prototype,
 
 var hasOwn = protoObject.hasOwnProperty,
     toString = protoObject.toString;
+//@namespace {object} vv script
+//
 
+/**
+ * @callback gulpDoneCallback
+ */
+
+/**
+ * A wrapper around jsdoc cli.
+ *
+ * This function collects all filenames. Then runs:
+ * ```jsdoc -c config -t node_modules/ink-docstrap/template gulpFile1 gulpFile2```
+ * 
+ * @param  {number} obj description
+ * @return {array} return 입니다.
+ * @see 참조 문서 및 메서드
+ * {@link http://www.wemakeprice.com}
+ * [Wmp]{@link http://www.wemakeprice.com}
+ * {@link unique}
+ * {@link http://naver.com naver}
+ * {@link http://naver.com|naver}
+ * @example 
+ * WmpAdminUtils.arrayUtils.unique([2,3,3,4,1,2,1]) --> [2, 3, 4, 1]
+ * @logs monolife, 16.06.23 #FRONTEND-001
+ * monolife, 16.06.24 #FRONTEND-002
+ */
 exports.keys = function (obj) {
     var natKeys = Object.prototype.keys;
 
@@ -27,10 +52,13 @@ exports.keys = function (obj) {
 
 /**
  * [unique description] 중복배열 요소 제거
- * @param  {[array]} duplicateArr [description] 중복배열 array
- * @return {[array]}      [description]
- *
- * ex : WmpAdminUtils.arrayUtils.unique([2,3,3,4,1,2,1]) --> [2, 3, 4, 1]
+ * 
+ * @param  {array} duplicateArr 중복배열 array
+ * @return {array} 
+ * @example
+ * WmpAdminUtils.arrayUtils.unique([2,3,3,4,1,2,1]) --> [2, 3, 4, 1]
+ * example2~
+ * 
  */
 exports.unique = function(duplicateArr){
     if (protoArray.reduce) {

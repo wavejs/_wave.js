@@ -1,0 +1,27 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {
+    "destination": "./docs"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true
+    },
+    "path": "ink-docstrap",
+    "theme": "cerulean",
+    "copyright": "copyright vv script wmp",
+    "navType": "inline",
+    "linenums": true,
+    "dateFormat": "MMMM Leeyoonwoo YYYY, h:mm:ss a"
+  }
+}

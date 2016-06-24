@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     jshint = require('gulp-jshint'),
     replace = require('gulp-replace'),
-    browserify = require('gulp-browserify');
+    browserify = require('gulp-browserify'),
+    jsdoc = require('gulp-jsdoc3');
 
 var pkg = require('./package');
 
@@ -27,6 +28,18 @@ gulp.task('build', function () {
         .pipe(browserify({standalone: 'vv'}))
         .pipe(rename('wave-' + pkg.version + '.js'))
         .pipe(gulp.dest('dist'));
+});
+
+// js-doc
+gulp.task('doc1', function(cb) {
+    gulp.src(['README.md', 'src/**/*.js'], {read: false})
+        .pipe(jsdoc(cb));
+});
+
+gulp.task('doc2', function(cb) {
+    var config = require('./configjsdoc.json');
+    gulp.src(['README.md', 'src/**/*.js'], {read: false})
+        .pipe(jsdoc(config, cb));
 });
 
 // for Browser
