@@ -1,7 +1,11 @@
 'use strict';
 
-var Core = require('../core');
+/**
+ * Global Variables
+ * @module global/gvars
+ */
 
+var Core = require('../core');
 var gvars = (function() {
 
     var gvarsObj = {};
@@ -13,7 +17,13 @@ var gvars = (function() {
         return listArr;
     };
     var setList = function(prop, value) {gvarsObj[prop] = value;};
-
+    /**
+     * Global Variables
+     * @function gvars
+     * @param  {object} param1 [description]
+     * @param  {object} param2 [description]
+     * @return {Boolean}        [description]
+     */
     return function(param1, param2) {
         // 인자가 없을 시 Variable List
         if (Core.isUndefined(param1) && Core.isUndefined(param2)) {

@@ -11,7 +11,7 @@
 	<![endif]-->
 	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
 
-	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+	<link type="text/css" rel="stylesheet" href="styles/site.paper.css">
 
 </head>
 
@@ -31,6 +31,20 @@
 		<ul class="nav navbar-nav">
 			
 			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="module-core_array-vv%2520script.html">core/array~vv script</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="module-core_array.html">core/array</a></li><li><a href="module-core_string.html">core/string</a></li><li><a href="module-global_gvars.html">global/gvars</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu inline">
 					<li><a href="Core.html">Core</a></li>
@@ -38,9 +52,23 @@
 			</li>
 			
 			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="module-foo_bar.html#.event:event:MyEvent">foo/bar.event:MyEvent</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu inline">
-					<li><a href="global.html#_moduleExtendCore">_moduleExtendCore</a></li><li><a href="global.html#keys">keys</a></li><li><a href="global.html#moduleExtend">moduleExtend</a></li><li><a href="global.html#moduleExtendDeep">moduleExtendDeep</a></li><li><a href="global.html#trim">trim</a></li><li><a href="global.html#unique">unique</a></li>
+					<li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#moduleExtend">moduleExtend</a></li><li><a href="global.html#moduleExtendDeep">moduleExtendDeep</a></li><li><a href="global.html#trim">trim</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="externals.list.html" class="dropdown-toggle" data-toggle="dropdown">Externals<b class="caret"></b></a>
+				<ul class="dropdown-menu inline">
+					<li><a href="external-String.html">String</a></li>
 				</ul>
 			</li>
 			
@@ -151,7 +179,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="_moduleExtendCore"><span class="type-signature"></span>_moduleExtendCore( [proto], destination, sources)</h4>
+    <h4 class="name" id="isFunction"><span class="type-signature"></span>isFunction()</h4>
     
     
 </dt>
@@ -159,7 +187,7 @@
 
     
     <div class="description">
-        <p>객체를 확장합니다.</p>
+        <p>isFunction</p>
     </div>
     
 
@@ -168,135 +196,6 @@
     
 
     
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Argument</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>proto</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">boolean</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>is optional, 체이닝을 위한 프로토타입 할당 여부입니다.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>destination</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-|
-
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>확장 대상이 될 객체입니다.</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>sources</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"><p>확장할 함수 집합의 객체, n개의 매개변수를 가질 수 있습니다.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
     
 
     
@@ -350,205 +249,6 @@
     
 
     
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>확장된 destination 객체를 반환합니다.</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">function</span>
-|
-
-<span class="param-type">object</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="keys"><span class="type-signature"></span>keys(obj)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>A wrapper around jsdoc cli.</p>
-<p>This function collects all filenames. Then runs:
-<code>jsdoc -c config -t node_modules/ink-docstrap/template gulpFile1 gulpFile2</code></p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>obj</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>description</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-	<dt class="tag-see method-doc-label method-doc-details-label">See:</dt>
-	<dd class="tag-see">
-		<ul>
-			<li><p>참조 문서 및 메서드
-<a href="http://www.wemakeprice.com">http://www.wemakeprice.com</a>
-<a href="http://www.wemakeprice.com">Wmp</a>
-<a href="global.html#unique"><code>unique</code></a>
-<a href="http://naver.com">naver</a>
-<a href="http://naver.com">naver</a></p></li>
-			</ul>
-	</dd>
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>return 입니다.</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">array</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">WmpAdminUtils.arrayUtils.unique([2,3,3,4,1,2,1]) --&gt; [2, 3, 4, 1]</pre>
-
 
     
 </dd>
@@ -1012,242 +712,9 @@
     
 </dd>
 
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="unique"><span class="type-signature"></span>unique(duplicateArr)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>[unique description] 중복배열 요소 제거</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>duplicateArr</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>중복배열 array</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">array</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-        <h5>Example</h5>
-        
-    <pre class="sunlight-highlight-javascript">WmpAdminUtils.arrayUtils.unique([2,3,3,4,1,2,1]) --&gt; [2, 3, 4, 1]
-example2~</pre>
-
-
-    
-</dd>
-
         </dl>
     
 
-    
-        <h3 class="subsection-title">Type Definitions</h3>
-
-        <dl>
-                
-<hr>
-<dt>
-    <h4 class="name" id="gulpDoneCallback"><span class="type-signature"></span>gulpDoneCallback()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-            </dl>
     
 
     
@@ -1289,8 +756,6 @@ example2~</pre>
 
 <footer>
 
-	footer test
-
 
 	<span class="copyright">
 	copyright vv script wmp
@@ -1299,7 +764,7 @@ example2~</pre>
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
 	
-		on June 06/24/201655yoon26tho 2016, 6:58:03 pm
+		on June 06/25/201666yoon26tho 2016, 10:57:39 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

@@ -1,5 +1,10 @@
 'use strict';
 
+/** 
+ * Utils String
+ * @exports core/string
+ */
+
 var utils = require('./');
 
 exports.trim = function (obj) {
@@ -28,6 +33,8 @@ exports.formatToNumber = function(value){
 
 /**
  * trim default config
+ *
+ * @global
  * @method trim
  * @example
  * trim: {
@@ -42,5 +49,5 @@ exports.formatToNumber = function(value){
  * }
  */
 exports.memberfunc = function(a, b) {
-
+    return '';
 }

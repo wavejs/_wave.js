@@ -11,6 +11,9 @@
   "plugins": [
     "plugins/markdown"
   ],
+  "markdown": {
+      "excludeTags": []
+  },
   "templates": {
     "cleverLinks": true,
     "monospaceLinks": false,
@@ -18,7 +21,7 @@
       "outputSourceFiles": true
     },
     "path": "ink-docstrap",
-    "theme": "cerulean",
+    "theme": "paper",
     "copyright": "copyright vv script wmp",
     "navType": "inline",
     "linenums": true,

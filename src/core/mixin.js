@@ -12,7 +12,8 @@ var push = protoArray.push,
 
 /**
  * 객체를 확장합니다.
- * 
+ *
+ * @private
  * @param {boolean} [proto] is optional, 체이닝을 위한 프로토타입 할당 여부입니다.
  * @param {function|object} destination 확장 대상이 될 객체입니다.
  * @param {object} sources 확장할 함수 집합의 객체, n개의 매개변수를 가질 수 있습니다.
@@ -104,7 +105,8 @@ console.log('==========');*/
 /**
  * 객체의 프로퍼티를 확장합니다.
  * 실제 역할은 wind()에 proto 옵션을 비활성하여 호출하는 형태입니다.
- * 
+ *
+ * @public
  * @param {function|object} destination 확장 대상이 될 객체입니다.
  * @param {object} sources 확장할 함수 집합의 객체, n개의 매개변수를 가질 수 있습니다.
  * @return {function|object} 확장된 destination 객체를 반환합니다.
@@ -120,7 +122,8 @@ exports.moduleExtend = function (/* destination, sources */) {
 /**
  * 객체의 프로퍼티 및 프로토타입을 확장합니다.
  * 실제 역할은 wind()에 proto 옵션을 활성하여 호출하는 형태입니다.
- * 
+ *
+ * @public
  * @param {function|object} destination 확장 대상이 될 객체입니다.
  * @param {object} sources 확장할 함수 집합의 객체, n개의 매개변수를 가질 수 있습니다.
  * @return {function|object} 확장된 destination 객체를 반환합니다.

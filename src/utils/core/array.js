@@ -1,5 +1,10 @@
 'use strict';
 
+/** 
+ * Utils Array
+ * @exports core/array
+ */
+
 var Core = require('../../core');
 var utils = require('./');
 
@@ -8,11 +13,21 @@ var protoArray = Array.prototype,
 
 var hasOwn = protoObject.hasOwnProperty,
     toString = protoObject.toString;
-//@namespace {object} vv script
+/** @namespace {object} vv script */
 //
 
 /**
  * @callback gulpDoneCallback
+ */
+
+
+
+/** The built in string object. Its name is external:String.
+ * @external String
+ */
+
+/** An event. Its name is module:foo/bar.event:MyEvent.
+ * @event module:foo/bar.event:MyEvent
  */
 
 /**
@@ -20,7 +35,8 @@ var hasOwn = protoObject.hasOwnProperty,
  *
  * This function collects all filenames. Then runs:
  * ```jsdoc -c config -t node_modules/ink-docstrap/template gulpFile1 gulpFile2```
- * 
+ *
+ * @public
  * @param  {number} obj description
  * @return {array} return 입니다.
  * @see 참조 문서 및 메서드
@@ -52,7 +68,8 @@ exports.keys = function (obj) {
 
 /**
  * [unique description] 중복배열 요소 제거
- * 
+ *
+ * @access public
  * @param  {array} duplicateArr 중복배열 array
  * @return {array} 
  * @example

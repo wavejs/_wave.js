@@ -7,7 +7,9 @@ var push = protoArray.push,
     slice = protoArray.slice,
     toStr = protoObject.toString;
 
-
+/**
+ * isFunction
+ */
 exports.isFunction = function (obj) {
     return typeof obj === 'function';
 };

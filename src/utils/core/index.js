@@ -1,5 +1,6 @@
 'use strict';
 
+
 var Core = require('../../core');
 
 Core.moduleExtend(
