@@ -8,13 +8,79 @@
     <script type="text/javascript">
         var str = '     string 123 abc';
         var arr = [1, 2, 2,3,4,5];
-        var obj = {a:1, b:2, c:3};
+        var obj2 = {a:1, b:2, c:3};
 
         console.log( 'vv.trim(str) - ', vv.trim(str) );
         console.log( 'vv(str).trim() - ', vv(str).trim() );
         console.log( 'vv(str).trim().val() - ', vv(str).trim().val() );
-        console.log( 'vv.unique(arr) - ', vv.unique(arr) );
-        // console.log( 'vv(str).trim().size().val() - ', vv(str).trim().size().val() );
+        // console.log( 'vv.unique(arr) - ', vv.unique(arr) );
+        function deepCopy(oldObj) {
+            var newObj = oldObj;
+            if (oldObj && typeof oldObj === 'object') {
+                newObj = Object.prototype.toString.call(oldObj) === "[object Array]" ? [] : {};
+                for (var i in oldObj) {
+                    newObj[i] = deepCopy(oldObj[i]);
+                }
+            }
+            return newObj;
+        }
+
+
+        var obj2 = [
+            {
+                param1: {
+                    a: 1,
+                    b: {
+                        ab: 1
+                    }
+                },
+                param2: {
+                    c: 3, 
+                    d: [1,2,3]
+                },
+                param3: 'string-param3',
+                param4: 'param4'
+            }
+        ]
+
+        // http://geniuscarrier.com/copy-object-in-javascript/
+        // http://blog.soulserv.net/understanding-object-cloning-in-javascript-part-ii/
+
+        var obj = {
+            param1: {
+                a: 1,
+                b: {
+                    ab: 1
+                }
+            },
+            param2: {
+                c: 3, 
+                d: [1,2,3]
+            },
+            param3: 'string'
+        }
+
+        var foo = { key: 'value' };
+var bar = $.extend({}, foo);
+foo.key = 'other value';
+console.log(foo);
+console.log(bar);
+
+
+        function argumentTest(src) {
+          return Array.prototype.slice.call(src);
+        }
+
+        function argsBeforeSlice() {
+          var arr = Array.prototype.slice.call(arguments, 0);
+          console.log('direct param : ', arr);
+        }
+
+        var test_arr = [1,2,3];
+        console.log('slice param : ', argumentTest(test_arr));
+        argsBeforeSlice(test_arr);
+
+
     </script>
 </head>
 <body>

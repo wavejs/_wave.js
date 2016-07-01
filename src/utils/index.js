@@ -7,5 +7,3 @@ Core.moduleExtend(
     require('./core'),       // utils core
     require('./browser')       // utils browser
 );
-
-// console.log('Core', module.exports.bb.getHash);

@@ -6,25 +6,31 @@
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "opts": {
-    "destination": "./docs"
+    "destination": "./docs",
+    "recurse": true
   },
   "plugins": [
     "plugins/markdown"
   ],
   "markdown": {
-      "excludeTags": []
+    "excludeTags": [],
+    "parser": "gfm",
+    "hardwrap": true
   },
   "templates": {
+    "logoFile": "",
     "cleverLinks": true,
     "monospaceLinks": false,
-    "default": {
-      "outputSourceFiles": true
-    },
+    "outputSourceFiles": true,
+    "outputSourcePath": true,
+    "systemName": "VV",
     "path": "ink-docstrap",
     "theme": "paper",
-    "copyright": "copyright vv script wmp",
+    "copyright": "VV © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.",
     "navType": "inline",
     "linenums": true,
-    "dateFormat": "MMMM Leeyoonwoo YYYY, h:mm:ss a"
+    "collapseSymbols": false,
+    "methodHeadingReturns": false,
+    "dateFormat": "MMMM YYYY, h:mm:ss a"
   }
 }
