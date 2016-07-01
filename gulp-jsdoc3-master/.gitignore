@@ -1,8 +1,0 @@
-node_modules
-.idea
-
-dist
-docs/gen
-coverage
-npm-debug.log
-coverage
